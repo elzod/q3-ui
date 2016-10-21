@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Team 10 Lab Reservation System</title>
+  </head>
+  <body>
+	<style type="text/css">
+	.tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+	.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
+	.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
+	.tg .tg-baqh{text-align:center;vertical-align:top}
+	.tg .tg-yw4l{vertical-align:top}
+	.tg .tg-6k2t{background-color:#D2E4FC;vertical-align:top}
+	</style>
+	<h1>Welcome to Team 10's Lab Reservation System</h1>
+
+<table class="tg">
+<tr>
+<th></th>
+{% for heading in tabledata['date'] %}
+<th>{{ heading }}</th>
+{% endfor %}
+</tr>
+
+{% for server in tabledata['servers'] %}
+<td class="tg-6k2t">{{ server }}</td>
+{% for cell in tabledata['servers'][server] %}	
+	<td class="tg-6k2t">{{ cell }}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+<form action="/" method="post" name="reservation">
+        {{ form.hidden_tag() }}
+	<p>
+                Name: {{ form.user_name(size=80) }}<br>
+		Server: {{ form.server_name(size=24) }}<br>
+		Start Date: {{ form.start_date(size=24) }}<br>
+		End Date: {{ form.end_date(size=24) }}
+        <p><input type="submit" value="Submit"></p>
+</form>
+  </body>
+</html>
